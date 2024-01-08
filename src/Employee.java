@@ -3,10 +3,12 @@ public class Employee {
 Wage */
     public static  final int IS_PART_TIME=1;
     public static  final int IS_FULL_TIME=2;
-    public static  final int EMP_RATE_PER_HOUR=20;
-    public static  final int NUM_OF_WORKING_DAYS=2;
-    public static  final int MAX_HRS_IN_MONTH=10;
-    public static  int computeEmpWage()
+    private static final int EMP_RATE_PER_HOUR = 20;
+    private  static  final int MAX_HRS_IN_MONTH=10;
+
+    private static  final int  NUM_OF_WORKING_DAYS=2;
+
+    public static  int computeEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHourPerMonth)
     {
         int empHrs,totalEmpHrs=0,totalWorkingDays=0;
 
@@ -29,7 +31,7 @@ totalEmpHrs+=empHrs;
 System.out.println("Day#: " +totalWorkingDays + "Emp hr :" +empHrs);
         }
         int totalEmpWage=totalEmpHrs * EMP_RATE_PER_HOUR;
-        System.out.println("Total Employee Wage:" +totalEmpWage);
+        System.out.println("Total Employee Wage for company:"+company+ "is:" +totalEmpWage);
         return  totalEmpWage;
     }
 
@@ -37,6 +39,7 @@ System.out.println("Day#: " +totalWorkingDays + "Emp hr :" +empHrs);
 
     public  static  void main(String[] args)
     {
-        computeEmpWage();
+        computeEmpWage("DMart",20,2,10);
+        computeEmpWage("Reliance",10,4,20);
     }
 }
