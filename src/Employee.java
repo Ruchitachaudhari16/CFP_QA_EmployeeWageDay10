@@ -1,6 +1,5 @@
 public class Employee {
-    /*UC7:-Refactor the Code to write a Class Method to Compute Employee
-Wage */
+    /*UC8:-Ability to compute Employee Wage for multiple companies */
     public static  final int IS_PART_TIME=1;
     public static  final int IS_FULL_TIME=2;
     private static final int EMP_RATE_PER_HOUR = 20;
