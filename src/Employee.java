@@ -1,27 +1,34 @@
 public class Employee {
-    /*UC9:-Ability to save the Total Wage for Each Company */
+    /*UC 10:-Ability to manage Employee Wage of multiple companies */
     public static  final int IS_PART_TIME=1;
     public static  final int IS_FULL_TIME=2;
-    private final String company;
-    private final int EMP_RATE_PER_HOUR;
-    private final int MAX_HRS_IN_MONTH;
-    private final int  NUM_OF_WORKING_DAYS;
-    private  int totalempWage;
-
-    public Employee(String company, int EMP_RATE_PER_HOUR, int MAX_HRS_IN_MONTH, int NUM_OF_WORKING_DAYS) {
-        this.company = company;
-        this.EMP_RATE_PER_HOUR = EMP_RATE_PER_HOUR;
-        this.MAX_HRS_IN_MONTH = MAX_HRS_IN_MONTH;
-        this.NUM_OF_WORKING_DAYS = NUM_OF_WORKING_DAYS;
+    int maxHoursPerMonth;
+    private int numOfCompany=0;
+    private CompanyEmpWage[] companyEmpWageArray;
+    Employee()
+    {
+        companyEmpWageArray=new CompanyEmpWage[5];
     }
-    public void computeEmpWage()
+    private void addCompanyEmpWage(String company,int empRatePerHour,int NUM_OF_WORKING_DAYS,int maxHoursPermonth)
+    {
+     companyEmpWageArray[numOfCompany]=new CompanyEmpWage(company,empRatePerHour,NUM_OF_WORKING_DAYS,maxHoursPermonth);
+    numOfCompany++;
+    }
+
+    private void computeEmpWage() {
+        for (int i = 0; i < numOfCompany; i++) {
+            companyEmpWageArray[i].setTotalempWage(this.computeEmpWage(companyEmpWageArray[i]));
+            System.out.println(companyEmpWageArray[i]);
+        }
+    }
+    private int computeEmpWage(CompanyEmpWage companyEmpWage)
     {
         int empHrs=0,totalEmpHrs=0,totalWorkingDays=0;
 
-        while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
+        while(totalEmpHrs <= companyEmpWage.maxHoursPerMonth && totalWorkingDays < companyEmpWage.NUM_OF_WORKING_DAYS)
         {
             totalWorkingDays++;
-            int empCheck=(((int)Math.floor(Math.random()*10)% 3));
+            int empCheck=(((int) Math.floor(Math.random()*10)% 3));
 switch (empCheck)
 {
     case IS_PART_TIME:
@@ -36,22 +43,15 @@ switch (empCheck)
 totalEmpHrs+=empHrs;
 System.out.println("Day#: " +totalWorkingDays + "Emp hr :" +empHrs);
         }
-        int totalEmpWage=totalEmpHrs * EMP_RATE_PER_HOUR;
+        return  totalEmpHrs * companyEmpWage.EMP_RATE_PER_HOUR;
     }
 
-@Override
-public String toString()
-{
-    return  "Total Emp Wage for Company:"+company+ "is: "+totalempWage;
-}
 
     public  static  void main(String[] args)
     {
-        Employee dmart=new Employee("Dmart",20,2,10);
-        Employee reliance=new Employee("Reliance",10,4,20);
-      dmart.computeEmpWage();
-      System.out.println(dmart);
-       reliance.computeEmpWage();
-       System.out.println(reliance);
+        Employee emp=new Employee();
+        emp.addCompanyEmpWage("DMart",20,2,10);
+        emp.addCompanyEmpWage("Reliaance",10,4,20);
+      emp.computeEmpWage();
     }
 }
