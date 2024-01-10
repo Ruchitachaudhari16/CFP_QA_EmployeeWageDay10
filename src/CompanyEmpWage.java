@@ -1,24 +1,36 @@
 public class CompanyEmpWage {
-    /*UC 10:-Ability to manage Employee Wage of multiple companies */
-    public final String company;
-    public final int EMP_RATE_PER_HOUR;
-    public final int MAX_HRS_IN_MONTH;
-    public final int  NUM_OF_WORKING_DAYS;
-    public   int totalempWage;
-    public int maxHoursPerMonth;
+    /*UC 11:-Ability to manage Employee Wage of multiple companies using API approach */
+    // instance constants
+    final String COMPANY_NAME;
+    final int WAGE_PER_HR;
+    final int MAX_WORKING_DAYS;
+    final int MAX_WORKING_HRS;
+    // instance variable
+    int totalEmpWage;
 
-    public CompanyEmpWage(String company, int EMP_RATE_PER_HOUR, int MAX_HRS_IN_MONTH, int NUM_OF_WORKING_DAYS) {
-        this.company = company;
-        this.EMP_RATE_PER_HOUR = EMP_RATE_PER_HOUR;
-        this.MAX_HRS_IN_MONTH = MAX_HRS_IN_MONTH;
-        this.NUM_OF_WORKING_DAYS = NUM_OF_WORKING_DAYS;
-    }
-    public void setTotalempWage(int totalempWage)
+    CompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
     {
-        this.totalempWage=totalempWage;
+        COMPANY_NAME = companyName;
+        WAGE_PER_HR = wagePerHr;
+        MAX_WORKING_DAYS = maxWorkingDays;
+        MAX_WORKING_HRS = maxWorkingHrs;
+        totalEmpWage = 0;
     }
-public String toString()
-{
-    return "Total emp wage for Company:" +company+ " is:"+totalempWage;
+
+    void setTotalEmployeeWage(int totalEmpWage)
+    {
+        this.totalEmpWage = totalEmpWage;
+    }
+
+    @Override
+    public String toString()
+    {
+        System.out.println("Details of " + COMPANY_NAME + " employee");
+        System.out.println("-----------------------------------------------------");
+        System.err.println("Wage per hour:" + WAGE_PER_HR);
+        System.out.println("Maximum working days:" + MAX_WORKING_DAYS);
+        System.out.println("Maximum working hours:" + MAX_WORKING_HRS);
+        return "Total wage for a month of " + COMPANY_NAME + " employee is " + totalEmpWage + "\n";
+    }
 }
-}
+
