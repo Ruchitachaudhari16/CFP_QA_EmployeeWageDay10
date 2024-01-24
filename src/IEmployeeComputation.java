@@ -1,7 +1,8 @@
 public interface IEmployeeComputation {
-/* UC12:-Refactor to have list of multiple companies to manage Employee Wage.*/
-        public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
+/* UC13:-Store the Daily Wage along with the Total Wage..*/
+public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
 
-        public void calculateTotalWage();
-    }
+    public void calculateTotalWage();
+}
+
 
