@@ -1,6 +1,7 @@
 public class CompanyEmpWage {
-    /*UC 11:-Ability to manage Employee Wage of multiple companies using API approach */
+    /*UC 12:-Refactor to have list of multiple companies to manage Employee Wage. */
     // instance constants
+
     final String COMPANY_NAME;
     final int WAGE_PER_HR;
     final int MAX_WORKING_DAYS;
@@ -33,4 +34,3 @@ public class CompanyEmpWage {
         return "Total wage for a month of " + COMPANY_NAME + " employee is " + totalEmpWage + "\n";
     }
 }
-
