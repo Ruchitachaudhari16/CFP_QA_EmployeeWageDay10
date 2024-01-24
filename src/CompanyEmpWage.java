@@ -1,5 +1,5 @@
 public class CompanyEmpWage {
-   /* UC13:-Store the Daily Wage along with the Total Wage.*/
+   /* UC14:-Ability to get the Total Wage when queried by Company..*/
 
     // instance constants
     final String COMPANY_NAME;
@@ -9,6 +9,7 @@ public class CompanyEmpWage {
     // instance variable
     int totalEmpWage;
 
+    //parameterized constructor to get and set the values
     CompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
     {
         COMPANY_NAME = companyName;
@@ -24,8 +25,7 @@ public class CompanyEmpWage {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         System.out.println("Details of " + COMPANY_NAME + " employee");
         System.out.println("-----------------------------------------------------");
         System.err.println("Wage per hour:" + WAGE_PER_HR);
